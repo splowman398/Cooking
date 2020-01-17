@@ -1,9 +1,17 @@
 {
-  "name": "cooking",
-  "version": "0.0.0",
-  "description": "Cooking",
-  "main": "server.js",
+  "name": "confetti_cuisine",
+  "version": "1.0.0",
+  "description": "A site for booking classses for cooking.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": {
-    "name": ""
+    "name": "Steve Plowman"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "http-status-codes": "1.4.0"
   }
 }
