@@ -39,16 +39,19 @@
     <Content Include="public\css\confetti_cuisine.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\js\confettiCuisine.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="router.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="utils.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\contact.html">
+    <Content Include="views\courses.ejs">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="views\index.html">
+    <Content Include="views\index.ejs">
       <SubType>Code</SubType>
     </Content>
   </ItemGroup>
