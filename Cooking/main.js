@@ -1,60 +1,32 @@
-const port = 3000,
-    http = require("http"),
-    httpStatus = require("http-status-codes"),
-    router = require("./router"),
-    contentTypes = require("./contentTypes"),
-    utils = require("./utils");
+const express = require("express"),
+    app = express(),
+    homeController = require("./controllers/homeController"),
+    layouts = require("express-ejs-layouts"),
+    errorController = require("./controllers/ErrorController");
 
-router.get("/", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.html);
-    utils.getFile("views/index.html", res);
+app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 3000);
+app.use(
+    express.urlencoded({
+        extended: false
+    })
+);
+app.use(express.json());
+app.use(layouts);
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+    res.render("index");
 });
 
-router.get("/courses.html", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.html);
-    utils.getFile("views/courses.html", res);
+app.get("/courses", homeController.showCourses);
+app.get("/contact", homeController.showSignUp);
+app.post("/contact", homeController.postedSignUpForm);
+
+
+app.listen(app.get("port"), () => {
+    console.log(`Server running at http://localhost:${app.get("port")}`);
 });
 
-router.get("/contact.html", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.html);
-    utils.getFile("views/contact.html", res);
-});
-
-router.post("/thanks.html", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.html);
-    utils.getFile("views/thanks.html", res);
-});
-
-router.get("/graph.png", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.png);
-    utils.getFile("public/images/graph.png", res);
-});
-
-router.get("/people.jpg", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.jpg);
-    utils.getFile("public/images/people.jpg", res);
-});
-
-router.get("/product.jpg", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.jpg);
-    utils.getFile("public/images/product.jpg", res);
-});
-
-router.get("/confetti_cuisine.css", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.css);
-    utils.getFile("public/css/confetti_cuisine.css", res);
-});
-
-router.get("/bootstrap.css", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.css);
-    utils.getFile("public/css/bootstrap.css", res);
-});
-
-router.get("/confetti_cuisine.js", (req, res) => {
-    res.writeHead(httpStatus.OK, contentTypes.js);
-    utils.getFile("public/js/confetti_cuisine.js", res);
-});
-
-
-http.createServer(router.handle).listen(port);
-console.log(`The server is listening on port number: ${port}`);
+app.use(errorController.pageNotFoundError);
+app.use(errorController.internalServerError);

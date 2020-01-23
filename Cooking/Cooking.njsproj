@@ -32,6 +32,12 @@
     <Content Include="contentTypes.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="controllers\errorController.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="controllers\homeController.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="main.js">
       <SubType>Code</SubType>
     </Content>
@@ -48,14 +54,27 @@
     <Content Include="utils.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\contact.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\courses.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\error.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\index.ejs">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\layout.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\thanks.ejs">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="controllers\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />

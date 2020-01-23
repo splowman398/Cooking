@@ -1,0 +1,17 @@
+  
+<div class="container">
+  <div class="col-sm-6">
+    <img src="https://raw.githubusercontent.com/JonathanWexler/get-programming-with-nodejs/master/unit_2/lesson_12_capstone/finish/confetti_cuisine/public/images/fruit.jpg" alt="">
+  </div>
+  <div class="col-sm-6">
+    <h1 class="title">Learn to cook cutting edge food</h1>
+    <h1>Our Courses</h1>
+    <% offeredCourses.forEach(course => { %>
+    <h5>
+      <%= course.title %>
+    </h5>
+    <span>$
+      <%= course.cost %> </span>
+    <% }); %>
+  </div>
+</div>
